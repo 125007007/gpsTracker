@@ -50,11 +50,11 @@
 
     function getPosition(){
         // console.log(position)
-        var latStr = "<%= lastLocation.lat  %>"
-        var longStr = "<%= lastLocation.lon  %>"
+        var latStr = "<%= lastLocation.lat %>"
+        var longStr = "<%= lastLocation.lon %>"
         var lat = parseFloat(latStr)
         var long = parseFloat(longStr)
-        var accuracy = 10
+        var accuracy = "<%= lastLocation.acc %>"
         console.log(lat, long, accuracy)
 
         if(marker) {
@@ -75,5 +75,6 @@
         console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy)
     }
 
+    
     getPosition();
 </script>
