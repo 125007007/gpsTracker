@@ -6,10 +6,6 @@ const app = express()
 const port = 3000
 app.set('view engine', 'ejs')
 
-const user = {
-    firstName: 'Tim',
-    lastName: 'Cook',
-}
 
 var LocalHistory = {
     points: []
@@ -20,8 +16,6 @@ function addToFile(points){
 
     var data = fs.readFileSync('output.json');
     var json = JSON.parse(data);
-    //console.log('data: ', data)
-    //console.log('json: ', json)
     json.points.push(...points);
     
     fs.writeFile("output.json", JSON.stringify(json), function (err) {
@@ -34,13 +28,20 @@ function addToFile(points){
 }
 
 app.get('/log', (req, res) => {
-    let lat = req.query.lat
-    let lon = req.query.lon
-    let acc = req.query.acc
-
-    let location = {lat:lat, lon:lon, acc:acc};
+    var lat = req.query.lat
+    var lon = req.query.lon
+    var acc = req.query.acc
+    var datetime = req.query.time
+    var splitdateitme = datetime.split('T')
+    console.log(splitdateitme)
+    // split time and date into seperate key:value pairs`
+    var date = splitdateitme[0]
+    var time = splitdateitme[1]
+    var time = time.substring(0, time.length-1);
+    console.log(time)
+    console.log(date)
+    var location = {lat:lat, lon:lon, acc:acc, date:date, time:time};
     LocalHistory.points.push(location)
-    //console.log(LocalHistory.points.length)
     console.log(location);
     addToFile(LocalHistory.points)
     //console.log('Your location is: ', lat + ', ' + lon, 'accuracy: ' + acc )
