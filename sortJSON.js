@@ -10,16 +10,10 @@ function sortFile(filename){
     var json = JSON.parse(data);
     console.log(json)
     // sort array
-    //json.points.sort();
-    let sortedProducts = json.points.sort(
-        (p1, p2) => (p1.time < p2.time) ? 1 : (p1.time > p2.time) ? -1 : 0);
-    
-    
-    console.log(sortedProducts)
-    fs.writeFile(filename, JSON.stringify(sortedProducts), function (err) {
-        if (err) throw err;
-        console.log('The array has been sorted!');
-     });
+    json.points.sort(function (a, b) {
+        return a.datetime.localeCompare(b.datetime);
+    });
+    console.log(json.points)
 }
 
 sortFile(filename)

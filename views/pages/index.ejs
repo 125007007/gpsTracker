@@ -55,9 +55,8 @@
         var lat = parseFloat(latStr)
         var long = parseFloat(longStr)
         var accuracy = "<%= lastLocation.acc %>"
-        var time = "<%= lastLocation.time %>"
-        var date = "<%= lastLocation.date %>"
-        console.log(lat, long, accuracy, time, date)
+        var datetime = "<%= lastLocation.datetime %>"
+        console.log(lat, long, accuracy, datetime)
 
         if(marker) {
             map.removeLayer(marker)
@@ -74,7 +73,7 @@
 
         map.fitBounds(featureGroup.getBounds())
 
-        console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy + " Time: " + time)
+        console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy + " date & time: " + datetime)
         //setTimeout(getPosition, 3000);
 
         setTimeout(function(){
