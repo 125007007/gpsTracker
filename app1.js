@@ -19,8 +19,11 @@ app.get('/log', (req, res) => {
     var datetime = req.query.time;
     var batt = req.query.batt
     var ischarging = req.query.ischarging
+    // strip off T and Z from time
+    /*
     var datetime = datetime.replace('T', ' ')
     var datetime = datetime.substring(0, datetime.length-1);
+    */
     var location = {
         lat:lat, 
         lon:lon, 
