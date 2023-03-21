@@ -15,8 +15,16 @@ An in-depth paragraph about your project and overview of use.
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* Clone the project
+```
+git clone https://github.com/125007007/gpsTracker.git
+cd gpsTracker
+```
+
+* Install dependencies
+```
+npm install
+``` 
 
 ### Executing program
 
