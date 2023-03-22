@@ -34,6 +34,7 @@ function addToFile(newData){
         //console.log(LocalHistory.points)
     } else {
         console.log('Ignored point as was the same as last one.')
+        LocalHistory.points.length = 0;
     }
 }
 
@@ -51,9 +52,9 @@ app.get('/log', (req, res) => {
     console.log(datetime)
     */
     var location = {
-        lat:lat, 
-        lon:lon, 
-        acc:acc, 
+        lat:lat,
+        lon:lon,
+        acc:acc,
         datetime:datetime,
         batt:batt, 
         ischarging:ischarging
