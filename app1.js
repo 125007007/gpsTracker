@@ -32,11 +32,11 @@ app.get('/log', (req, res) => {
         batt:batt, 
         ischarging:ischarging
     };
-    LocalHistory.points.push(location);
-    console.log(location);
-    if (LocalHistory.points.length > 3){
+    if (LocalHistory.points.length > 10){
         LocalHistory.points.length = 0;
     }
+    LocalHistory.points.push(location);
+    //console.log(location);
     res.end()
     //addToFile(LocalHistory.points)
     //console.log('Your location is: ', lat + ', ' + lon, 'accuracy: ' + acc )
@@ -47,8 +47,9 @@ app.get('/', (req, res) => {
     //let lastLocation = LocalHistory.points.slice(-1)[0]
     //let data = fs.readFileSync('output.json');
     //let json = JSON.parse(data);
+
     let lastLocation = LocalHistory.points.slice(-1)[0];
-    console.log(LocalHistory)
+    console.log('Length: ', LocalHistory.points.length)
     res.render('pages/index', {lastLocation});
 })
 
