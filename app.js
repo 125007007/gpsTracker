@@ -13,7 +13,7 @@ var LocalHistory = {
 }
 
 // change to single object for each locations point and save to json file on each recives
-function addToFile(newData){
+function addToFile(newData, filename){
     console.log('length of newData.points: ', newData.points.length)
     //console.log('testing: ', newData)
     var data = fs.readFileSync(filename);
