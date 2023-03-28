@@ -6,7 +6,7 @@ const port = 3000
 //const filename = 'sorted.json'
 app.set('view engine', 'ejs')
 const path = require('path')
-app.use('/static', express.static(path.join(__dirname, 'static')))
+app.use('/', express.static(path.join(__dirname, '/')))
 
 
 app.get('/', (req, res) => {

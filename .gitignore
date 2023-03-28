@@ -133,3 +133,5 @@ dist
 # add output.json
 
 output.json
+prevPoints
+static

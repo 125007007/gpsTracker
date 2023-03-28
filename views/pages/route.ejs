@@ -31,7 +31,7 @@
 
 <!-- leaflet js  -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script type="application/json"  src="/static/sorted.json"></script>
+<script type="application/json"  src="sorted.json"></script>
 
 
 <script language="javascript">
@@ -45,7 +45,7 @@
         else if (hours < 24) return hours + " Hrs";
         else return days + " Days"
       }
-    $.getJSON('/static/sorted.json', function(jsonData) {
+    $.getJSON('sorted.json', function(jsonData) {
                //var sorted = JSON.parse('sorted.json');
        //let sorted = require('sorted.json');
        var redIcon = new L.Icon({
