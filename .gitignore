@@ -133,5 +133,6 @@ dist
 # add output.json
 
 output.json
+sorted.json
 prevPoints
 static
