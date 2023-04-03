@@ -40,6 +40,15 @@ node app.js
 ```
 node app1.js
 ```
+* routeApp.js | shows all points from sorted.json
+```
+node routeApp.js
+```
+* playback.js | plays over points based on time | run playBackConver.js first
+```
+node playBackConvert.js
+node playback.js
+```
 
 
 ### Location History

@@ -45,6 +45,16 @@
         else if (hours < 24) return hours + " Hrs";
         else return days + " Days"
       }
+
+      const delayLoop = (fn, delay) => {
+        return (x, i) => {
+          setTimeout(() => {
+            fn(x);
+          }, i * delay);
+        }
+      };
+
+      
     $.getJSON('sorted.json', function(jsonData) {
                //var sorted = JSON.parse('sorted.json');
        //let sorted = require('sorted.json');
@@ -133,6 +143,8 @@
                              '<br> Time from last point: ' + msToTime(timeDiff) )
 
         marker.bindPopup(label);
+
+
        });
        /*
        //Loop through the markers array
