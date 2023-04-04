@@ -45,19 +45,19 @@ app.get('/log', (req, res) => {
     var datetime = req.query.time
     var batt = req.query.batt
     var ischarging = req.query.ischarging
-    // strip off T and Z from time
-    /*
-    var datetime = datetime.replace('T', ' ')
-    var datetime = datetime.substring(0, datetime.length-1);
-    console.log(datetime)
-    */
+    //new paramiters
+    var spd = req.query.spd
+    var dir = req.query.dir
+ 
     var location = {
         lat:lat,
         lon:lon,
         acc:acc,
         datetime:datetime,
         batt:batt, 
-        ischarging:ischarging
+        ischarging:ischarging,
+        spd:spd,
+        dir:dir
     };
 
     LocalHistory.points.push(location)

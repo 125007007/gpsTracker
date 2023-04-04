@@ -60,7 +60,9 @@
     map.addLayer(marker);
     var label = String('Datetime: ' + "<%= lastLocation.datetime %>" + 
                         '<br> Battery: ' + "<%= lastLocation.batt %>" + 
-                        '<br> Accuracy: ' + "<%= lastLocation.acc %>")
+                        '<br> Accuracy: ' + Math.round("<%= lastLocation.acc %>" * 100) / 100 +
+                        '<br> Speed: ' + "<%= lastLocation.spd %>" +
+                        '<br> Heading: ' + "<%= lastLocation.dir %>")
 
     marker.bindTooltip(label, {noHide: true});
     marker.addTo(map)
