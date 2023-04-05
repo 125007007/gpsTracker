@@ -134,6 +134,7 @@ dist
 
 output.json
 sorted.json
+playbackTest.json
 prevPoints
 static
 testing/*
