@@ -2,9 +2,10 @@
 
 const fs = require('fs');
 const inputFile = 'output.json'
+const outputFile = 'sorted.json'
 
-// change to single object for each locations point and save to json file on each recives
-function sortFile(file, filter){
+// filters / seperates 
+function filterFile(file, filter){
 
     var json = fs.readFileSync(file);
     var data = JSON.parse(json);
@@ -37,5 +38,24 @@ function sortFile(file, filter){
 
 }
 
-sortFile(inputFile, 'gps')
-sortFile(inputFile, 'network')
+// change to single object for each locations point and save to json file on each recives
+function sortFile(file, sortedFile){
+
+    var json = fs.readFileSync(file);
+    var data = JSON.parse(json);
+    //console.log(data)
+    // sort array
+    data.points.sort(function (a, b) {
+        return a.datetime.localeCompare(b.datetime);
+    });
+    //console.log(data.points)
+    fs.writeFile(sortedFile, JSON.stringify(data), function (err) {
+        if (err) throw err;
+        console.log('Wrote sorted json to file!');
+    });
+
+
+}
+sortFile(inputFile, outputFile)
+filterFile(inputFile, 'gps')
+filterFile(inputFile, 'network')
