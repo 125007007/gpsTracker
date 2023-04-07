@@ -138,3 +138,5 @@ playbackTest.json
 prevPoints
 static
 testing/*
+gps.json
+network.json

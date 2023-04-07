@@ -25,6 +25,49 @@ function addToFile(newData){
     LocalHistory.points.length = 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.get('/log', (req, res) => {
     var lat = req.query.lat
     var lon = req.query.lon
@@ -33,8 +76,11 @@ app.get('/log', (req, res) => {
     var batt = req.query.batt
     var ischarging = req.query.ischarging
     //new paramiters
-    var spd = req.query.spd
-    var dir = req.query.dir
+    var prov = req.query.prov
+    var profile = req.query.profile
+    var hdop = req.query.hdop
+    var vdop = req.query.vdop
+    var pdop = req.query.pdop
  
     var location = {
         lat:lat,
@@ -43,8 +89,11 @@ app.get('/log', (req, res) => {
         datetime:datetime,
         batt:batt, 
         ischarging:ischarging,
-        spd:spd,
-        dir:dir
+        prov:prov,
+        profile:profile,
+        hdop:hdop,
+        vdop:vdop,
+        pdop:pdop
     };
 
     LocalHistory.points.push(location)
