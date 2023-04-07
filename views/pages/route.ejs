@@ -94,7 +94,8 @@
               
          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-          maxZoom: 18
+          maxZoom: 22,
+          maxNativeZoom: 19
        }).addTo(map);
        map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text.
 
