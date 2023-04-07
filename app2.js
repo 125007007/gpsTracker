@@ -27,47 +27,6 @@ function addToFile(newData){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.get('/log', (req, res) => {
     var lat = req.query.lat
     var lon = req.query.lon
@@ -81,6 +40,8 @@ app.get('/log', (req, res) => {
     var hdop = req.query.hdop
     var vdop = req.query.vdop
     var pdop = req.query.pdop
+    var spd = req.query.spd
+    var dir = req.query.dir
  
     var location = {
         lat:lat,
@@ -90,6 +51,8 @@ app.get('/log', (req, res) => {
         batt:batt, 
         ischarging:ischarging,
         prov:prov,
+        spd:spd,
+        dir:dir,
         profile:profile,
         hdop:hdop,
         vdop:vdop,
