@@ -123,6 +123,13 @@
         var markerLocation = new L.LatLng(lat, lon);
         var timeDiff = newTime - prevTime
 
+        // accuracy circle
+        var circle = L.circle(markerLocation, {
+            color: null,
+            fillColor: '#777be6',
+            fillOpacity: 0.25,
+            radius: item.acc
+        }).addTo(map);
         
 
         //console.log(timeDiff, newTime, prevTime)
