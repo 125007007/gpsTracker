@@ -57,10 +57,19 @@
     var bounds = new L.LatLngBounds(latLngs);
     map.fitBounds(bounds);
 
+            // accuracy circle
+    var circle = L.circle(markerLocation, {
+        color: null,
+        fillColor: '#777be6',
+        fillOpacity: 0.25,
+        radius: "<%= lastLocation.acc %>"
+    }).addTo(map);
+
     map.addLayer(marker);
     var label = String('Datetime: ' + "<%= lastLocation.datetime %>" + 
                         '<br> Battery: ' + "<%= lastLocation.batt %>" + 
                         '<br> Accuracy: ' + Math.round("<%= lastLocation.acc %>" * 100) / 100 +
+                        '<br> Provider: ' + "<%= lastLocation.prov %>" +
                         '<br> Speed: ' + "<%= lastLocation.spd %>" +
                         '<br> Heading: ' + "<%= lastLocation.dir %>")
 

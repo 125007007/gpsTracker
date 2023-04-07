@@ -135,6 +135,14 @@
         } else {
             var marker = new L.Marker(markerLocation);
         }
+        
+        // accuracy circle
+        var circle = L.circle(markerLocation, {
+            color: null,
+            fillColor: '#777be6',
+            fillOpacity: 0.25,
+            radius: item.acc
+        }).addTo(map);
 
         map.addLayer(marker);
         var label = String('Datetime: ' + item.datetime + 
