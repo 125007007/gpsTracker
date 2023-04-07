@@ -2,17 +2,7 @@ const fs = require('fs');
 
 
 var data = {
-    points:[
-        {
-            lat: null,
-            lon: null,
-            acc: null,
-            datetime: null,
-            batt: null,
-            ischarging: null
-
-        }
-    ]
+    points:[]
 }
 
 fs.writeFile("output.json", JSON.stringify(data), function (err) {
