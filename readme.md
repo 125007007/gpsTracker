@@ -64,6 +64,8 @@ node routeApp.js
 
 ## Future Features
 * Change server logging from JSON to GEOJSON
+
+* add search for specific location in list of markers
  
 ## License
 
