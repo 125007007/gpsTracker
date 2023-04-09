@@ -36,24 +36,25 @@ app.get('/log', (req, res) => {
     var ischarging = req.query.ischarging
     //new paramiters
     var prov = req.query.prov
-    var profile = req.query.profile
+    var dist = req.query.dist
+    var sats = req.query.sats
+    var alt = req.query.alt
     var hdop = req.query.hdop
     var vdop = req.query.vdop
     var pdop = req.query.pdop
-    var spd = req.query.spd
-    var dir = req.query.dir
+
  
     var location = {
         lat:lat,
         lon:lon,
         acc:acc,
+        alt:alt,
         datetime:datetime,
         batt:batt, 
         ischarging:ischarging,
         prov:prov,
-        spd:spd,
-        dir:dir,
-        profile:profile,
+        dist:dist,
+        sats:sats,
         hdop:hdop,
         vdop:vdop,
         pdop:pdop
@@ -71,6 +72,7 @@ app.get('/', (req, res) => {
     let data = fs.readFileSync(filename);
     let json = JSON.parse(data);
     let lastLocation = json.points.slice(-1)[0]
+    // need to add prev location for time difference
     res.render('pages/index', {lastLocation})
 })
 

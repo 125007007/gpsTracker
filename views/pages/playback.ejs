@@ -48,14 +48,31 @@
     $.getJSON('playbackTest.json', function(jsonData) {
 
     let data = jsonData;
+    const Options = {
+        // trackPoint options
+        trackPointOptions: {
+          // whether draw track point
+          isDraw: true,
+          // whether use canvas to draw it, if false, use leaflet api `L.circleMarker`
+          useCanvas: false,
+          stroke: false,
+          color: '#ef0300',
+          fill: true,
+          fillColor: '#ef0300',
+          opacity: 0.3,
+          radius: 4
+        }
+    }
 
     // create map and add baseLayer
     const map = L.map('mapid').setView([-41.1715, 174.8248], 15);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 22,
+      maxNativeZoom: 19
     }).addTo(map);
 
-    const trackplayback = L.trackplayback(data, map);
+    const trackplayback = L.trackplayback(data, map, Options);
     const trackplaybackControl = L.trackplaybackcontrol(trackplayback);
     //console.log(trackplayback.getTime())
     trackplaybackControl.addTo(map);

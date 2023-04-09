@@ -147,8 +147,13 @@
         map.addLayer(marker);
         var label = String('Datetime: ' + item.datetime + 
                             '<br> Battery: ' + item.batt + 
-                             '<br> Accuracy: ' + item.acc + 
-                             '<br> Time from last point: ' + msToTime(timeDiff) )
+                            '<br> Charging: ' + item.ischarging +
+                            '<br> Altitude: ' + item.alt +
+                            '<br> Accuracy: ' + item.acc + 
+                            '<br> Provider: ' + item.prov +
+                            '<br> Distance: ' + item.dist +
+                            '<br> Satellites: ' + item.sats +                           
+                            '<br> Time from last point: ' + msToTime(timeDiff))
 
         marker.bindPopup(label);
 

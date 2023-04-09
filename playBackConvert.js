@@ -38,7 +38,22 @@ function rewriteFile(filename, newfile){
         var timestampWithOffset = unixtime - offset;
         console.log(ISOtime, unixtime, offset, new Date(timestampWithOffset))
 // need to add the removel of null object
-        var location = {"lng": parseFloat(point.lon), "lat": parseFloat(point.lat), "time": Math.floor(timestampWithOffset/1000)}
+        var location = {
+            "lng": parseFloat(point.lon), 
+            "lat": parseFloat(point.lat), 
+            "time": Math.floor(timestampWithOffset/1000), 
+            info:[
+                {key: 'Time:', value: point.datetime},
+                {key: 'Battery:', value: point.batt},
+                {key: 'Charging:', value: point.ischarging},
+                {key: 'Altitude:', value: point.alt},
+                {key: 'Accuracy:', value: point.acc},
+                {key: 'Provider:', value: point.prov},
+                {key: 'Distance:', value: point.dist},
+                {key: 'Satellites:', value: point.sats}
+                
+                
+            ]}
         //console.log(location)
         device.push(location)
         
