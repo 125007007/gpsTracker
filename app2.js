@@ -8,8 +8,24 @@ const filename = 'output.json'
 app.set('view engine', 'ejs')
 
 
-var LocalHistory = {
-    points: []
+var LocalHistory = { points: [] }
+
+function createFile(filename) {
+    fs.stat(filename, function(err, stat) {
+    if (err == null) {
+        console.log('File exists');
+    } else if (err.code === 'ENOENT') {
+        // file does not exist
+        var data = { points:[] }
+        
+        fs.writeFile("output.json", JSON.stringify(data), function (err) {
+            if (err) throw err;
+            console.log('The file "output.json" was created!');
+        });
+    } else {
+        console.log(err.code);
+    }
+    });
 }
 
 // change to single object for each locations point and save to json file on each recives
@@ -75,6 +91,8 @@ app.get('/', (req, res) => {
     // need to add prev location for time difference
     res.render('pages/index', {lastLocation})
 })
+
+createFile(filename)
 
 app.listen(port, () => {
   console.log(`App listening at port ${port}`)
