@@ -2,7 +2,7 @@
 const fs = require('fs');
 
 const filename = 'sorted.json'
-const newfile = 'playbackTest.json'
+const newfile = 'playback.json'
 
 // change to single object for each locations point and save to json file on each recives
 function sortFile(filename, newfile){
