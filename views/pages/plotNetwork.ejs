@@ -75,6 +75,15 @@
             shadowSize: [41, 41]
           });
         
+        var orangeIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+          });
+        
        let sorted = jsonData
 
         // create array for map center
@@ -132,6 +141,8 @@
 
         } else if (index == 0 || index == sorted.points.length){
             var marker = new L.Marker(markerLocation, {icon: greenIcon});
+        } else if (item.ischarging != 'true'){
+            var marker = new L.Marker(markerLocation, {icon: orangeIcon});
         } else {
             var marker = new L.Marker(markerLocation);
         }
