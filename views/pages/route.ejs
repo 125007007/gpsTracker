@@ -95,6 +95,17 @@
             popupAnchor: [1, -34],
             shadowSize: [41, 41]
           });
+
+        
+        
+          var greyIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+          });
         
        let sorted = jsonData
 
@@ -154,8 +165,34 @@
 
         //console.log(timeDiff, newTime, prevTime)
         if ( timeDiff > 30e3) {
+            var marker = new L.Marker(markerLocation);
+
+            // 30e3 or 30000 milliseconds
             //console.log(Math.floor(timeDiff / 30e3), 'secounds ago')
-            var marker = new L.Marker(markerLocation, {icon: redIcon});
+            //var marker = new L.Marker(markerLocation, {icon: greyIcon});
+            var prevMarkerLocation = new L.LatLng(sorted.points[prev].lat, sorted.points[prev].lon);
+            var prevMarker = new L.Marker(prevMarkerLocation, {icon: redIcon})
+            var prevLabel = String('Marker Num: ' + index + 
+                            '<br> Datetime: ' + sorted.points[prev].datetime + 
+                            '<br> Battery: ' + sorted.points[prev].batt + 
+                            '<br> Charging: ' + sorted.points[prev].ischarging +
+                            '<br> Altitude: ' + sorted.points[prev].alt +
+                            '<br> Accuracy: ' + sorted.points[prev].acc + 
+                            '<br> Provider: ' + sorted.points[prev].prov +
+                            '<br> Distance: ' + sorted.points[prev].dist +
+                            '<br> Satellites: ' + sorted.points[prev].sats +                           
+                            '<br> Dwell time: ' + msToTime(timeDiff) )
+
+            prevMarker.on('mouseover', function (e) {
+                this.openPopup();
+            });
+            prevMarker.on('mouseout', function (e) {
+                this.closePopup();
+            });
+
+            prevMarker.bindPopup(prevLabel);
+            map.addLayer(prevMarker);
+
             //console.log(timeDiff / 60e3)
 
         } else if (index == 0 || index == sorted.points.length){
@@ -168,6 +205,13 @@
             var marker = new L.Marker(markerLocation);
         }
 
+        marker.on('mouseover', function (e) {
+            this.openPopup();
+        });
+        marker.on('mouseout', function (e) {
+            this.closePopup();
+        });
+
         map.addLayer(marker);
         var label = String('Marker Num: ' + index + 
                             '<br> Datetime: ' + item.datetime + 
@@ -177,26 +221,12 @@
                             '<br> Accuracy: ' + item.acc + 
                             '<br> Provider: ' + item.prov +
                             '<br> Distance: ' + item.dist +
-                            '<br> Satellites: ' + item.sats +                           
-                            '<br> Time from last point: ' + msToTime(timeDiff) )
+                            '<br> Satellites: ' + item.sats)
 
         marker.bindPopup(label);
 
 
        });
-       /*
-       //Loop through the markers array
-       for (var i=0; i<markers.length; i++) {
-         
-            var lon = markers[i].lon;
-            var lat = markers[i].lat;
-            var popupText = markers[i].datetime;
 
-            var markerLocation = new L.LatLng(lat, lon);
-            var marker = new L.Marker(markerLocation);
-            map.addLayer(marker);
-            marker.bindPopup(popupText);
-       
-       }*/
     });
  </script>
